@@ -10,13 +10,14 @@
     "description": "Start Hyperf Server On Debug(xdebug) Mode",
     "autoload": {
         "psr-4": {
-            "riven\\HyperfXdebug\\": "src/"
+            "Riven\\HyperfXdebug\\": "src/"
         }
     },
     "require": {
         "php": ">=8.0",
         "hyperf/command": "~3.0",
-        "hyperf/di": "~3.0"
+        "hyperf/di": "~3.0",
+        "ext-xdebug": "*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",

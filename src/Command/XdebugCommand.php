@@ -5,7 +5,7 @@ declare(strict_types=1);
  * @contact  riven@qq.com
  */
 
-namespace riven\HyperfXdebug\Command;
+namespace Riven\HyperfXdebug\Command;
 
 use Hyperf\Command\Command;
 use Hyperf\Contract\ConfigInterface;
@@ -13,7 +13,7 @@ use Hyperf\Contract\ConfigInterface;
 class XdebugCommand extends Command
 {
     private array $cmd;
-    private string $server_name = '';
+    private string $serverName = '';
 
     public function __construct(protected ConfigInterface $config)
     {
@@ -22,7 +22,7 @@ class XdebugCommand extends Command
         $this->setDescription('Start Hyperf Server On Debug(xdebug) Mode.');
         //config
         $conf = $this->config->get('xdebug');
-        $this->server_name = $conf['server_name'] ?? 'Unnamed';
+        $this->serverName = $conf['server_name'] ?? 'Unnamed';
         $this->cmd[] = $conf['bin_path'] ?? 'php';
         if (!empty($conf['xdebug'])) {
             foreach ($conf['xdebug'] as $key => $value) {
@@ -39,7 +39,7 @@ class XdebugCommand extends Command
         }
         $this->output->writeln('Start server on debug mode...');
 
-        proc_open('export PHP_IDE_CONFIG=serverName=' . $this->server_name . ';' . implode(' ', $this->cmd), [
+        proc_open('export PHP_IDE_CONFIG=serverName=' . $this->serverName . ';' . implode(' ', $this->cmd), [
             0 => STDIN,
             1 => STDOUT,
             2 => STDERR,
